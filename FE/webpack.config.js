@@ -2,7 +2,7 @@
  * @Author: Renzi Meng
  * @Date: 2018-09-02 16:39:36
  * @Last Modified by: Renzi Meng
- * @Last Modified time: 2018-09-03 11:01:49
+ * @Last Modified time: 2018-09-04 19:30:25
  */
 
 var webpack = require('webpack');
@@ -14,22 +14,24 @@ var WEBPACK_ENV = process.env.WEBPACK_ENV || 'dev';
 console.log(WEBPACK_ENV);
 
 // 获取html-webpack-plugin参数的方法
-var getHtmlConfig = function (name) {
+var getHtmlConfig = function (name, title) {
   return {
     template: './src/view/' + name + '.html',
     filename: 'view/' + name + '.html',
+    title: title,
     inject: true,
     hash: true,
     chunks: ['common', name]
   };
-}
+};
 
 // webpack config
 var config = {
   entry: {
-    'common': ['./src/page/common/index.js', 'webpack-dev-server/client?http://localhost:8088/'],
+    'common': ['./src/page/common/index.js'],
     'index': ['./src/page/index/index.js'],
     'login': ['./src/page/login/index.js'],
+    'result': ['./src/page/result/index.js'],
   },
   output: {
     path: './dist',
@@ -48,7 +50,20 @@ var config = {
         test: /\.(gif|png|jpg|woff|svg|eot|ttf)\??.*$/,
         loader: 'url-loader?limit=100&name=resource/[name].[ext]'
       },
+      {
+        test: /\.string$/,
+        loader: 'html-loader'
+      }
     ]
+  },
+  resolve: {
+    alias: {
+      node_modules: __dirname + '/node_modules',
+      util: __dirname + '/src/util',
+      page: __dirname + '/src/page',
+      service: __dirname + '/src/service',
+      image: __dirname + '/src/image',
+    }
   },
   plugins: [
     // 独立通用模块到js/base.js
@@ -59,13 +74,14 @@ var config = {
     // 把css单独打包到文件里
     new ExtractTextPlugin("css/[name].css"),
     // html模板的处理
-    new HtmlWebpackPlugin(getHtmlConfig('index')),
-    new HtmlWebpackPlugin(getHtmlConfig('login')),
+    new HtmlWebpackPlugin(getHtmlConfig('index', '首页')),
+    new HtmlWebpackPlugin(getHtmlConfig('login', '用户登陆')),
+    new HtmlWebpackPlugin(getHtmlConfig('result', '操作结果')),
   ]
 };
 
 if ('dev' === WEBPACK_ENV) {
   config.entry.common.push('webpack-dev-server/client?http://localhost:8088/');
-}
+};
 
 module.exports = config;
