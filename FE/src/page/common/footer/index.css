@@ -1,26 +1,26 @@
 /*
- * @Author: Renzi Meng
- * @Date: 2018-09-04 17:35:25
- * @Last Modified by: Renzi Meng
- * @Last Modified time: 2018-09-04 17:36:08
- */
+* @Author: zhengquan
+* @Date:   2017-06-16 13:10:00
+* @Last Modified by:   zhengquan
+* @Last Modified time: 2017-06-16 13:16:50
+*/
+
 .footer {
-  margin-top: 20px;
-  padding-bottom: 10px;
+    padding: 10px 0;
 }
 
 .footer .links {
-  text-align: center;
-  color: #666;
-  line-height: 30px;
+    text-align: center;
+    color: #666;
+    line-height: 30px;
 }
 
-.footer .links .link {
-  padding: 0 10px;
+.footer .link {
+    padding: 0 10px;
 }
 
 .footer .copyright {
-  text-align: center;
-  color: #666;
-  line-height: 30px;
+    text-align: center;
+    color: #666;
+    line-height: 30px;
 }

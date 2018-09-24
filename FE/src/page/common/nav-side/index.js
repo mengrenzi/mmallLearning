@@ -1,59 +1,47 @@
 /*
- * @Author: Rosen
- * @Date:   2017-05-19 17:39:14
- * @Last Modified by: Renzi Meng
- * @Last Modified time: 2018-09-04 19:18:10
+ * @Author: zhengquan
+ * @Date:   2017-06-16 17:52:03
+ * @Last Modified by:   zhengquan
+ * @Last Modified time: 2017-06-22 12:47:29
  */
+
 'use strict';
+
 require('./index.css');
-var _mm = require('util/mm.js');
+var _util = require('util/util.js');
 var templateIndex = require('./index.string');
-// 侧边导航
-var navSide = {
+
+//侧边导航
+var nav_side = {
     option: {
         name: '',
-        navList: [{
-                name: 'user-center',
-                desc: '个人中心',
-                href: './user-center.html'
-            },
-            {
-                name: 'order-list',
-                desc: '我的订单',
-                href: './order-list.html'
-            },
-            {
-                name: 'user-pass-update',
-                desc: '修改密码',
-                href: './user-pass-update.html'
-            },
-            {
-                name: 'about',
-                desc: '关于MMall',
-                href: './about.html'
-            }
+        navList: [
+            { name: 'user-center', desc: '个人中心', href: './user-center.html' },
+            { name: 'order-list', desc: '我的订单', href: './order-list.html' },
+            { name: 'update-password', desc: '修改密码', href: './user-password-reset.html' },
+            { name: 'about', desc: '关于MMALL', href: './about.html' }
+
         ]
     },
-    init: function (option) {
-        // 合并选项
+    init: function(option) {
+        //合并选项
         $.extend(this.option, option);
         this.renderNav();
     },
-    // 渲染导航菜单
-    renderNav: function () {
-        // 计算active数据
-        for (var i = 0, iLength = this.option.navList.length; i < iLength; i++) {
+    //渲染导航菜单
+    renderNav: function() {
+        //计算active数据
+        for (var i = 0, size = this.option.navList.length; i < size; i++) {
             if (this.option.navList[i].name === this.option.name) {
                 this.option.navList[i].isActive = true;
             }
         };
-        // 渲染list数据
-        var navHtml = _mm.renderHtml(templateIndex, {
+        //渲染list数据
+        var navHtml = _util.renderHtml(templateIndex, {
             navList: this.option.navList
         });
-        // 把html放入容器
+        //html放入容器
         $('.nav-side').html(navHtml);
     }
-};
-
-module.exports = navSide;
+}
+module.exports = nav_side;

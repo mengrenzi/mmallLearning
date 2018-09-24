@@ -1,34 +1,33 @@
 /*
- * @Author: Renzi Meng
- * @Date: 2018-09-04 18:35:39
- * @Last Modified by:   Renzi Meng
- * @Last Modified time: 2018-09-04 18:35:39
+ * @Author: zhengquan
+ * @Date:   2017-06-22 23:53:28
+ * @Last Modified by:   zhengquan
+ * @Last Modified time: 2017-06-24 16:05:15
  */
 
 'use strict';
 
-var _mm = require('util/mm.js');
-
+var _util = require('util/util.js');
 var _product = {
-  // 获取商品列表
-  getProductList: function (listParam, resolve, reject) {
-    _mm.request({
-      url: _mm.getServerUrl('/product/list.do'),
-      data: listParam,
-      success: resolve,
-      error: reject
-    });
-  },
-  // 获取商品详细信息
-  getProductDetail: function (productId, resolve, reject) {
-    _mm.request({
-      url: _mm.getServerUrl('/product/detail.do'),
-      data: {
-        productId: productId
-      },
-      success: resolve,
-      error: reject
-    });
-  }
-}
+    //获取产品列表信息
+    getProductList: function(listParam, resolve, reject) {
+        _util.request({
+            url: _util.getServerUrl('/product/list.do'),
+            data: listParam,
+            success: resolve,
+            error: reject,
+        });
+    },
+    // 获取产品详细信息
+    getProductDetail: function(productId, resolve, reject) {
+        _util.request({
+            url: _util.getServerUrl('/product/detail.do'),
+            data: {
+                productId: productId
+            },
+            success: resolve,
+            error: reject,
+        });
+    },
+};
 module.exports = _product;

@@ -1,19 +1,20 @@
 /*
- * @Author: Renzi Meng
- * @Date: 2018-09-04 16:53:07
- * @Last Modified by: Renzi Meng
- * @Last Modified time: 2018-09-04 16:58:14
- */
+* @Author: zhengquan
+* @Date:   2017-06-15 16:29:45
+* @Last Modified by:   zhengquan
+* @Last Modified time: 2017-06-19 15:43:01
+*/
+
 .nav-simple {
-  height: 60px;
-  line-height: 60px;
-  border-bottom: 1px solid #ddd;
-  background: #fff;
+    height: 60px;
+    line-height: 60px;
+    border-bottom: 1px solid #ddd;
+    background: #fff;
 }
 
 .nav-simple .logo {
-  font-size: 26px;
-  font-weight: bold;
-  color: #c60023;
-  text-decoration: none;
+    font-size: 26px;
+    font-weight: bold;
+    color: #c60023;
+    text-decoration: none;
 }

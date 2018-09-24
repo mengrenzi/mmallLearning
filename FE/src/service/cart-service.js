@@ -1,96 +1,86 @@
 /*
- * @Author: Renzi Meng
- * @Date: 2018-09-04 18:35:26
- * @Last Modified by:   Renzi Meng
- * @Last Modified time: 2018-09-04 18:35:26
+ * @Author: zhengquan
+ * @Date:   2017-06-15 23:34:36
+ * @Last Modified by:   zhengquan
+ * @Last Modified time: 2017-06-25 00:06:11
  */
+
 'use strict';
 
-var _mm = require('util/mm.js');
+var _util = require('util/util.js');
 
 var _cart = {
-  // 获取购物车数量
-  getCartCount: function (resolve, reject) {
-    _mm.request({
-      url: _mm.getServerUrl('/cart/get_cart_product_count.do'),
-      success: resolve,
-      error: reject
-    });
-  },
-  // 添加到购物车
-  addToCart: function (productInfo, resolve, reject) {
-    _mm.request({
-      url: _mm.getServerUrl('/cart/add.do'),
-      data: productInfo,
-      success: resolve,
-      error: reject
-    });
-  },
-  // 获取购物车列表
-  getCartList: function (resolve, reject) {
-    _mm.request({
-      url: _mm.getServerUrl('/cart/list.do'),
-      success: resolve,
-      error: reject
-    });
-  },
-  // 选择购物车商品
-  selectProduct: function (productId, resolve, reject) {
-    _mm.request({
-      url: _mm.getServerUrl('/cart/select.do'),
-      data: {
-        productId: productId
-      },
-      success: resolve,
-      error: reject
-    });
-  },
-  // 取消选择购物车商品
-  unselectProduct: function (productId, resolve, reject) {
-    _mm.request({
-      url: _mm.getServerUrl('/cart/un_select.do'),
-      data: {
-        productId: productId
-      },
-      success: resolve,
-      error: reject
-    });
-  },
-  // 选中全部商品
-  selectAllProduct: function (resolve, reject) {
-    _mm.request({
-      url: _mm.getServerUrl('/cart/select_all.do'),
-      success: resolve,
-      error: reject
-    });
-  },
-  // 取消选中全部商品
-  unselectAllProduct: function (resolve, reject) {
-    _mm.request({
-      url: _mm.getServerUrl('/cart/un_select_all.do'),
-      success: resolve,
-      error: reject
-    });
-  },
-  // 更新购物车商品数量
-  updateProduct: function (productInfo, resolve, reject) {
-    _mm.request({
-      url: _mm.getServerUrl('/cart/update.do'),
-      data: productInfo,
-      success: resolve,
-      error: reject
-    });
-  },
-  // 删除指定商品
-  deleteProduct: function (productIds, resolve, reject) {
-    _mm.request({
-      url: _mm.getServerUrl('/cart/delete_product.do'),
-      data: {
-        productIds: productIds
-      },
-      success: resolve,
-      error: reject
-    });
-  },
-}
+    //获取购物车的数量
+    getCartCount: function(resolve, reject) {
+        _util.request({
+            url: _util.getServerUrl('/cart/get_cart_product_count.do'),
+            method: 'POST',
+            success: resolve,
+            error: reject,
+        });
+    },
+    addToCart: function(productInfo, resolve, reject) {
+        _util.request({
+            url: _util.getServerUrl('/cart/add.do'),
+            data: productInfo,
+            success: resolve,
+            error: reject,
+        });
+    },
+    // 获取购物车列表
+    getCartList: function(resolve, reject) {
+        _util.request({
+            url: _util.getServerUrl('/cart/list.do'),
+            method: 'POST',
+            success: resolve,
+            error: reject,
+        });
+    },
+    selectProduct: function(productId, resolve, reject) {
+        _util.request({
+            url: _util.getServerUrl('/cart/select.do'),
+            data: { productId: productId },
+            success: resolve,
+            error: reject,
+        });
+    },
+    unselectProduct: function(productId, resolve, reject) {
+        _util.request({
+            url: _util.getServerUrl('/cart/un_select.do'),
+            data: { productId: productId },
+            success: resolve,
+            error: reject,
+        });
+    },
+    selectAllProduct: function(resolve, reject) {
+        _util.request({
+            url: _util.getServerUrl('/cart/select_all.do'),
+            success: resolve,
+            error: reject,
+        });
+    },
+    unselectAllProduct: function(resolve, reject) {
+        _util.request({
+            url: _util.getServerUrl('/cart/un_select_all.do'),
+            success: resolve,
+            error: reject,
+        });
+    },
+    updateProduct: function(productInfo, resolve, reject) {
+        _util.request({
+            url: _util.getServerUrl('/cart/update.do'),
+            data: productInfo,
+            success: resolve,
+            error: reject,
+        });
+    },
+    deleteProduct: function(productIds, resolve, reject) {
+        _util.request({
+            url: _util.getServerUrl('/cart/delete_product.do'),
+            data: { productIds: productIds },
+            success: resolve,
+            error: reject,
+        });
+    }
+};
 module.exports = _cart;
